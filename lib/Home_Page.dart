@@ -39,10 +39,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
+        myLocationEnabled: true,
         compassEnabled: true,
         myLocationButtonEnabled: true,
-        mapType: MapType.normal,
+        mapType: MapType.satellite,
         initialCameraPosition: _kGooglePlex,
+        markers: Set<Marker>.of(_marker),
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
