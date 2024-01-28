@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_geocoder/geocoder.dart';
+import 'package:geocoding/geocoding.dart';
 
 class ConvertLatLangToAddress extends StatefulWidget {
   const ConvertLatLangToAddress({super.key});
@@ -10,6 +10,7 @@ class ConvertLatLangToAddress extends StatefulWidget {
 }
 
 class _ConvertLatLangToAddressState extends State<ConvertLatLangToAddress> {
+  String stAddress = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,22 +21,15 @@ class _ConvertLatLangToAddressState extends State<ConvertLatLangToAddress> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Text(stAddress),
           GestureDetector(
             onTap: () async {
-              final query = "1600 Amphiteatre Parkway, Mountain View";
-              var addresses =
-                  await Geocoder.local.findAddressesFromQuery(query);
-              var second = addresses.first;
-              print("${second.featureName} : ${second.coordinates}");
+              List<Location> locations =
+                  await locationFromAddress("Gronausestraat 710, Enschede");
 
-              final coordinates =
-                  new Coordinates(28.218502397090017, 83.99532336092742);
-              var address = await Geocoder.local
-                  .findAddressesFromCoordinates(coordinates);
-              var first = address.first;
-              print("Address: " +
-                  first.featureName.toString() +
-                  first.addressLine.toString());
+              setState(() {
+                
+              });
             },
             child: Padding(
               padding: const EdgeInsets.all(50.0),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_map/Home_Page.dart';
 import 'package:google_map/convert_latlang_to_address.dart';
+import 'package:google_map/polylines.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),
-      home: ConvertLatLangToAddress(),
+      home: PolyLines(),
     );
   }
 }
